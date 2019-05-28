@@ -6,10 +6,10 @@
 'use strict';
 
 const makeComputedArtifact = require('../computed-artifact.js');
-const MetricArtifact = require('./metric');
+const MetricArtifact = require('./metric.js');
 const LanternMaxPotentialFID = require('./lantern-max-potential-fid.js');
-const LHError = require('../../lib/lh-error');
-const TracingProcessor = require('../../lib/tracehouse/tracing-processor');
+const LHError = require('../../lib/lh-error.js');
+const TracingProcessor = require('../../lib/tracehouse/tracing-processor.js');
 
 class MaxPotentialFID extends MetricArtifact {
   /**
