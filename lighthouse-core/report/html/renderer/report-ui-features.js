@@ -26,6 +26,7 @@
 /* globals getFilenamePrefix Util */
 
 /** @typedef {import('./dom.js')} DOM */
+/** @typedef {import('./util.js')} Util */
 
 /**
  * @param {HTMLTableElement} tableEl
@@ -98,7 +99,9 @@ class ReportUIFeatures {
 
     // Fireworks.
     const scoresAll100 = Object.values(report.categories).every(cat => cat.score === 1);
-    if (!this._dom.isDevTools() && scoresAll100) {
+    const hasAllCoreCategories =
+      Object.keys(report.categories).filter(id => !Util.isPluginCategory(id)).length >= 5;
+    if (!this._dom.isDevTools() && scoresAll100 && hasAllCoreCategories) {
       turnOffTheLights = true;
       const scoresContainer = this._dom.find('.lh-scores-container', this._document);
       scoresContainer.classList.add('score100');
